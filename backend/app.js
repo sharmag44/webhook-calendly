@@ -1,7 +1,7 @@
 /** Express app for calendly demo. */
 const express = require("express");
 const app = express();
-const { handleEventCreated, handleEventCanceled } = require("./helperWebhook")
+const { parseResponse, handleEventCanceled } = require("./helperWebhook")
 
 
 
@@ -23,7 +23,7 @@ app.post('/',function (req, res, next)  {
       
     case 'invitee.created':
       const createdEvent = event.payload;
-      handleEventCreated(createdEvent);
+      parseResponse(createdEvent);
       break;
     case 'invitee.canceled':
       const canceledEvent = event.payload;
