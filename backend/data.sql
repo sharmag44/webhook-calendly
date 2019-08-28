@@ -57,8 +57,6 @@ INSERT INTO users (email, password, is_admin, first_name, last_name, current_com
   ('elie@gmail.com', 'elie123', false, 'Elie', 'Schoppik', 'Rithm', '2017-06-01', 'Talk to financial advisor to calculate how many instructors he can hire.', 'Recruit more instructors.'),
   ('joel@gmail.com', 'joel123', false, 'Joel', 'Burton', 'Rithm', '2017-08-23', 'General investment advice', 'Help bootcamp grads negotiate.');
 
--- add old_event_id new_event_id
--- remove date field and update start end time with full timestamps
 INSERT INTO appointments (user_id, event_id, calendly_user_id, created_at, event_type, event_type_name, reason, admin_notes, start_time, end_time, location, canceled, canceler_name, cancel_reason, canceled_at, old_event_id, new_event_id) VALUES
   (3, 'BCHFF2F62BWNJVPP', 'ABCFF2F62BWNJVPP', '2019-08-29T09:15:00-07:00', 'One-on-One', '30 Minute Meeting', 'legal advice', '', '2019-08-31T09:15:00-07:00', '2019-08-31T09:45:00-07:00', 'Zoom', false, null, null, null, null, null),
   (3, 'GCIEBYAHGKWNENHS', 'BCHFF2F62BWNJVPP', '2019-08-27T14:00:29-07:00', 'One-on-One', '15 Minute Meeting', 'consult with a lawyer', '', '2019-08-30T14:00:29-07:00', '2019-08-30T14:15:29-07:00', 'Zoom', false, null, null, null, null, null),
