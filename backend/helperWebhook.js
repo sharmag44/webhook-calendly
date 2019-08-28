@@ -11,6 +11,7 @@ function parseResponse(obj) {
     let flatObj = flatten(obj)
     let appointmentObj = {
         event_id: flatObj['event.uuid'],
+        user_email: flatObj['invitee.email'],
         calendly_user_id: flatObj['event_type.owner.uuid'],
         created_at: flatObj['event.created_at'],
         event_type: flatObj['event_type.kind'],
