@@ -1,7 +1,8 @@
 /** Express app for calendly demo. */
 const express = require("express");
 const app = express();
-const { parseResponse, handleEventCanceled } = require("./helperWebhook")
+// helper function to parse big json object from calendly
+const { parseResponse }= require("./helperWebhook")
 
 
 
@@ -27,7 +28,7 @@ app.post('/',function (req, res, next)  {
       break;
     case 'invitee.canceled':
       const canceledEvent = event.payload;
-      handleEventCanceled(canceledEvent);
+      parseResponse(canceledEvent);
       break;
     default:
       // Unexpected event type
