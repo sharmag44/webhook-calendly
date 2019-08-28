@@ -1,0 +1,197 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "event_id",
+    "calendly_user_id",
+    "start_time",
+    "start_time_pretty",
+    "end_time",
+    "end_time_pretty",
+    "canceled"
+  ],
+  "properties": {
+    "event_id": {
+      "$id": "#/properties/event_id",
+      "type": "string",
+      "title": "The Event_id Schema",
+      "default": "",
+      "examples": [
+        "BCHFF2F62BWNJVPP"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "calendly_user_id": {
+      "$id": "#/properties/calendly_user_id",
+      "type": "string",
+      "title": "The Calendly_user_id Schema",
+      "default": "",
+      "examples": [
+        "ABCFF2F62BWNJVPP"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "created_at": {
+      "$id": "#/properties/created_at",
+      "type": "string",
+      "title": "The Created_at Schema",
+      "default": "",
+      "examples": [
+        "2019-08-29T09:15:00-07:00"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "event_type": {
+      "$id": "#/properties/event_type",
+      "type": "string",
+      "title": "The Event_type Schema",
+      "default": "",
+      "examples": [
+        "One-on-One"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "event_type_name": {
+      "$id": "#/properties/event_type_name",
+      "type": "string",
+      "title": "The Event_type_name Schema",
+      "default": "",
+      "examples": [
+        "30 Minute Meeting"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "reason": {
+      "$id": "#/properties/reason",
+      "type": "string",
+      "title": "The Reason Schema",
+      "default": "",
+      "examples": [
+        "legal advice"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "admin_notes": {
+      "$id": "#/properties/admin_notes",
+      "type": "string",
+      "title": "The Admin_notes Schema",
+      "default": "",
+      "examples": [
+        "also wants to discuss salary negotiation"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "start_time": {
+      "$id": "#/properties/start_time",
+      "type": "string",
+      "title": "The Start_time Schema",
+      "default": "",
+      "examples": [
+        "2019-08-31T09:15:00-07:00"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "start_time_pretty": {
+      "$id": "#/properties/start_time_pretty",
+      "type": "string",
+      "title": "The Start_time_pretty Schema",
+      "default": "",
+      "examples": [
+        "09:15am - Saturday, August 31, 2019"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "end_time": {
+      "$id": "#/properties/end_time",
+      "type": "string",
+      "title": "The End_time Schema",
+      "default": "",
+      "examples": [
+        "2019-08-31T09:45:00-07:00"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "end_time_pretty": {
+      "$id": "#/properties/end_time_pretty",
+      "type": "string",
+      "title": "The End_time_pretty Schema",
+      "default": "",
+      "examples": [
+        "09:45am - Saturday, August 31, 2019"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "location": {
+      "$id": "#/properties/location",
+      "type": "string",
+      "title": "The Location Schema",
+      "default": "",
+      "examples": [
+        "Zoom"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "canceled": {
+      "$id": "#/properties/canceled",
+      "type": "boolean",
+      "title": "The Canceled Schema",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "canceler_name": {
+      "$id": "#/properties/canceler_name",
+      "type": "string",
+      "title": "The Canceler_name Schema",
+      "default": "",
+      "examples": [
+        "Emi Tsukuda"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "cancel_reason": {
+      "$id": "#/properties/cancel_reason",
+      "type": "string",
+      "title": "The Cancel_reason Schema",
+      "default": "",
+      "examples": [
+        "too many meetings"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "canceled_at": {
+      "$id": "#/properties/canceled_at",
+      "type": "string",
+      "title": "The Canceled_at Schema",
+      "default": "",
+      "examples": [
+        "2019-08-27T14:00:29-07:00"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "old_event_id": {
+      "$id": "#/properties/old_event_id",
+      "type": "string",
+      "title": "The Old_event_id Schema",
+      "default": "",
+      "examples": [
+        "BCHFF2F62BWNJVZZ"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "new_event_id": {
+      "$id": "#/properties/new_event_id",
+      "type": "string",
+      "title": "The New_event_id Schema",
+      "default": "",
+      "examples": [
+        "ACHFF2F62BWNJVZZ"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}
