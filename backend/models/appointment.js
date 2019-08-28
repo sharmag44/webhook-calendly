@@ -1,6 +1,12 @@
 // const db = require("../db");
 
 class Appointment {
+/** ALL methods need to check for existing user and retrieve user_id using email from calendly
+ * If we can't find a user_id, then send an email saying that the meeting will be canceled
+ * please try again and be sure to use the same email as elevate account
+ * 
+ */
+
 
 /** Find all appointments. */
 /** Find all active appointments. */
@@ -27,6 +33,6 @@ class Appointment {
     return result.rows;
   }
 
-
-
 }
+
+module.exports = Appointment;
