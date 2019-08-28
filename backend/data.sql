@@ -73,22 +73,23 @@ INSERT INTO users_calendly_users (user_id, calendly_user_id) VALUES
   (2, 'BCHFF2F62BWNJVPP');
 
 
- {"event_id": "BCHFF2F62BWNJVPP",
-  "calendly_user_id": "ABCFF2F62BWNJVPP",
-  "created_at": "2019-08-29T09:15:00-07:00",
-  "event_type": "One-on-One",
-  "event_type_name": "30 Minute Meeting",
-  "reason": "legal advice",
-  "admin_notes": "also wants to discuss salary negotiation",
-  "start_time": "2019-08-31T09:15:00-07:00",
-  "start_time_pretty": "09:15am - Saturday, August 31, 2019",
-  "end_time": "2019-08-31T09:45:00-07:00",
-  "end_time_pretty": "09:45am - Saturday, August 31, 2019",
-  "location": "Zoom",
-  "canceled": true,
-  "canceler_name": "Emi Tsukuda",
-  "cancel_reason": "too many meetings",
-  "canceled_at": "2019-08-27T14:00:29-07:00",
-  "old_event_id": "BCHFF2F62BWNJVZZ",
-  "new_event_id": "ACHFF2F62BWNJVZZ"
-  }
+-- TODO: verify that this is correct JSON SCHEMA 
+--  {"event_id": "BCHFF2F62BWNJVPP",
+--   "calendly_user_id": "ABCFF2F62BWNJVPP",
+--   "created_at": "2019-08-29T09:15:00-07:00",
+--   "event_type": "One-on-One",
+--   "event_type_name": "30 Minute Meeting",
+--   "reason": "legal advice",
+--   "admin_notes": "also wants to discuss salary negotiation",
+--   "start_time": "2019-08-31T09:15:00-07:00",
+--   "start_time_pretty": "09:15am - Saturday, August 31, 2019",
+--   "end_time": "2019-08-31T09:45:00-07:00",
+--   "end_time_pretty": "09:45am - Saturday, August 31, 2019",
+--   "location": "Zoom",
+--   "canceled": true,
+--   "canceler_name": "Emi Tsukuda",
+--   "cancel_reason": "too many meetings",
+--   "canceled_at": "2019-08-27T14:00:29-07:00",
+--   "old_event_id": "BCHFF2F62BWNJVZZ",
+--   "new_event_id": "ACHFF2F62BWNJVZZ"
+--   }
