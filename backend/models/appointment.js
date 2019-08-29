@@ -7,10 +7,8 @@ class Appointment {
    * 
    */
 
-
+// DONE
   /** Find all appointments. */
-  /** Find all active appointments. */
-  /** Find a specific appointment by the appointment id. */
 
   // DONE
   /** Create a new appointment with 'data' from calendly API. */
@@ -19,6 +17,9 @@ class Appointment {
   /** Cancel an appointment. 
    *  Find the original appointment by id and modify record with cancel data.
   */
+
+  // MAYBE TO DO
+  /** Find a specific appointment by the appointment id. */
 
   // static async findAllActiveAppointments() {
   //   const result = await db.query(
@@ -29,6 +30,32 @@ class Appointment {
 
   //   return result.rows;
   // }
+
+  // find all appointment data from elevate appointments database
+  static async findAll(){
+    const result = await db.query(
+      `SELECT  user_id, users.first_name, users.last_name, users.email, created_at, event_type, event_type_name, start_time_pretty, location, canceled
+      FROM appointments
+      JOIN users on users.id = appointments.user_id
+      ORDER BY users.last_name
+       `);
+       let appointments = result.rows
+       return appointments
+  }
+
+  static async findAppointmentsByUserEmail(email){
+
+    const result = await db.query(
+      `SELECT  user_id, users.first_name, users.last_name, users.email, created_at, event_type, event_type_name, start_time_pretty, location, canceled
+      FROM appointments
+      JOIN users on users.id = appointments.user_id
+      WHERE users.email = $1
+       `, [email]);
+       let appointments = result.rows
+       return appointments
+     
+
+  }
 
   static async create(obj) {
 
