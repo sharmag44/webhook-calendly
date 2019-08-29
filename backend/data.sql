@@ -55,7 +55,8 @@ CREATE TABLE users_calendly_users (
  calendly_user_id TEXT NOT NULL
 );
 
--- Update elevate users table to include Emi record - required for testing Calendly integration
+-- Update elevate users table to include existing calendly user record - required for testing Calendly integration
+-- e.g., In data below add stephanie.simms@gmail.com to correspond with existing calendly user email
 INSERT INTO users (email, password, is_admin, first_name, last_name, current_company, hire_date, needs, goals) VALUES
   ('testuser@gmail.com', 'password123', false, 'Test', 'User', 'Google', '2018-06-23', 'Talk to financial advisor about salary/equity negotiations.', 'Increase in equity.'),
   ('admin@gmail.com', 'admin123', true, 'Admin', 'User', '', '2019-06-23', '', ''),
@@ -76,24 +77,3 @@ INSERT INTO users_calendly_users (user_id, calendly_user_id) VALUES
   (2, 'BCHFF2F62BWNJVPP');
 
 
--- JSON SCHEMA 
---  {"event_id": "BCHFF2F62BWNJVPP",
---   "user_email": "testuser@gmail.com",
---   "calendly_user_id": "ABCFF2F62BWNJVPP",
---   "created_at": "2019-08-29T09:15:00-07:00",
---   "event_type": "One-on-One",
---   "event_type_name": "30 Minute Meeting",
---   "reason": "legal advice",
---   "admin_notes": "also wants to discuss salary negotiation",
---   "start_time": "2019-08-31T09:15:00-07:00",
---   "start_time_pretty": "09:15am - Saturday, August 31, 2019",
---   "end_time": "2019-08-31T09:45:00-07:00",
---   "end_time_pretty": "09:45am - Saturday, August 31, 2019",
---   "location": "Zoom",
---   "canceled": true,
---   "canceler_name": "Emi Tsukuda",
---   "cancel_reason": "too many meetings",
---   "canceled_at": "2019-08-27T14:00:29-07:00",
---   "old_event_id": "BCHFF2F62BWNJVZZ",
---   "new_event_id": "ACHFF2F62BWNJVZZ"
---   }

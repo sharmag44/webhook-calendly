@@ -1,57 +1,51 @@
-/** Express app for calendly demo. */
+/** Express app for elevate. */
 const express = require("express");
 const app = express();
-const ExpressError = require("./expressError");
+const cors = require("cors");
+app.use(cors());
 
-const { parseResponse } = require("./helperWebhook");
-const { create, cancel, findAll, findAppointmentsByUser} = require("./models/appointment");
+/** import routes */
 
-const jsonschema = require("jsonschema");
-const appointmentSchema = require("./schemas/appointmentSchema.json");
+const usersRoutes = require('./routes/users');
+const salariesRoutes = require('./routes/salaries');
+const authRoutes = require('./routes/auth');
+const questionsRoutes = require('./routes/questions');
+const calendlyWebhookRoute = require("./routes/calendlyWebhook");
+const appointmentsRoutes = require("./routes/appointments");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Endpoint for webhook to receive calendly events
-// To test webhook/calendly functionality locally with ngrok you must configure this endpoint as '/'
-app.post('/webhook', async function (req, res, next) {
-  try {
-    // parse request payload then validate
-    const eventPayload = req.body.payload;
-    const parsedObj = parseResponse(eventPayload);
-    const validate = jsonschema.validate(parsedObj, appointmentSchema);
+/** routes */
+app.use('/login', authRoutes);
+app.use('/users', usersRoutes);
+app.use('/salaries', salariesRoutes);
+app.use('/questions', questionsRoutes);
+app.use('/webhook', calendlyWebhookRoute);
+app.use('/appointments', appointmentsRoutes);
 
-    if (!validate.valid) {
-      let listOfErrors = validate.errors.map(error => error.stack);
-      throw new ExpressError(listOfErrors, 400);
-    }
-    // Handle the event
-    switch (req.body.event) {
-      case 'invitee.created':
-        await create(parsedObj);
-        break;
-      case 'invitee.canceled':
-        await cancel(parsedObj);
-        break;
-      default:
-        // Unexpected event type
-        return res.status(400).end();
-    }
-    // Return a response to acknowledge receipt of the event
-    res.json({ received: true });
-  }
-  catch (err) {
-    return next(err);
-  }
+/** 404 handler */
+
+app.use(function (req, res, next) {
+  const err = new Error("Not Found", 404);
+
+  // pass the error to the next piece of middleware
+  return next(err);
 });
 
-app.get('/', async function (req, res, next) {
-  let appointments= await findAll()
-  return res.json({ appointments });
-})
+/** general error handler */
 
-app.get('/:email', async function (req, res, next) {
-  let appointments= await findAppointmentsByUser(req.params.email)
-  return res.json({ appointments });
-})
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500);
+  console.error(err.stack);
+
+  return res.json({
+    status: err.status,
+    message: err.message
+  });
+});
+
 module.exports = app;
+
+
+

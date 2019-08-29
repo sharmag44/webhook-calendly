@@ -7,30 +7,6 @@ class Appointment {
    * 
    */
 
-// DONE
-  /** Find all appointments. */
-
-  // DONE
-  /** Create a new appointment with 'data' from calendly API. */
-
-// DONE
-  /** Cancel an appointment. 
-   *  Find the original appointment by id and modify record with cancel data.
-  */
-
-  // MAYBE TO DO
-  /** Find a specific appointment by the appointment id. */
-
-  // static async findAllActiveAppointments() {
-  //   const result = await db.query(
-  //     `SELECT username, first_name, last_name, email
-  //       FROM appointments
-  //       ORDER BY username`
-  //   );
-
-  //   return result.rows;
-  // }
-
   // find all appointment data from elevate appointments database
   static async findAll(){
     const result = await db.query(
@@ -128,8 +104,7 @@ class Appointment {
 
 
   static async cancel(obj) {
-//  NOTE: we don't have access to old event id through pure cancel object
-// so I used other possible unique value to find the record
+    
     let startTime = obj.start_time
     let professionalId = obj.calendly_user_id
   
