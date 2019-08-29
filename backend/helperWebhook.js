@@ -1,15 +1,10 @@
-const flatten = require('flat')
+const flatten = require('flat');
 
-// TODO: parse new event object and insert database
-// Two scenarios for invitee.created:
-// 1) straightforward create path for new event
-// 2) reschedule an event cancels original and creates a new event with cross referenced ids
-
-
-// Helper function to parse big json data to flat object
+// Helper function to flatten calendly json data object and parse for fields to log in elevate db
 function parseResponse(obj) {
     
-    let flatObj = flatten(obj)
+    let flatObj = flatten(obj);
+
     let appointmentObj = {
         event_id: flatObj['event.uuid'],
         user_email: flatObj['invitee.email'],
@@ -29,18 +24,10 @@ function parseResponse(obj) {
         canceled_at: flatObj['invitee.canceled_at'],
         old_event_id: flatObj['old_event.uuid'] || null,
         new_event_id: flatObj['new_event.uuid'] || null
-    }
+    };
 
-
-    // reschedule appointment
     return appointmentObj
-
 }
-
-// Two scenarios for invitee.canceled: 
-// 1) canceled event - update original event with canceled info 
-// 2) rescheduled event - update original event with canceled info and new event id AND create new event with old event id
-
 
 
 module.exports = { parseResponse }
