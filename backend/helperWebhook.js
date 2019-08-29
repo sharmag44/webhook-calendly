@@ -27,7 +27,6 @@ function parseResponse(obj) {
     };
 
     return appointmentObj
-    // console.log("appointment object is  ", appointmentObj)
 }
 
 

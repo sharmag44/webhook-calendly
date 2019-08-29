@@ -12,13 +12,10 @@ class Appointment {
   /** Find all active appointments. */
   /** Find a specific appointment by the appointment id. */
 
+  // DONE
   /** Create a new appointment with 'data' from calendly API. */
 
-  /** Reschedule an appointment. 
-   *  Step 1 (this.cancel) Find the original appointment by id and modify record with cancel data.
-   *  Step 2: (this.create) Create a new appointment record with old event id contained in new calendly obj. 
-   */
-
+// DONE
   /** Cancel an appointment. 
    *  Find the original appointment by id and modify record with cancel data.
   */
@@ -93,29 +90,31 @@ class Appointment {
             old_event_id, 
             new_event_id
             )
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)`
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
+        RETURNING event_id, start_time`
         , array);
     } catch (err) {
       console.log(err)
     }
-    console.log("result is ", result)
+    console.log(`event id ${result.rows[0].event_id} and start time ${result.rows[0].start_time} is created`)
   }
 
 
   static async cancel(obj) {
- 
-     let startTime = obj.start_time
-    
+//  NOTE: we don't have access to old event id through pure cancel object
+// so I used other possible unique value to find the record
+    let startTime = obj.start_time
     let professionalId = obj.calendly_user_id
-    // console.log("I am here to cancel", startTime, professionalId)
+  
     const oldEventResult = await db.query(
-      `SELECT event_id
+      `SELECT event_id, start_time, canceled
           FROM appointments
           WHERE (start_time = $1 AND calendly_user_id = $2)`,
       [startTime, professionalId]);
 
     const oldEventId = oldEventResult.rows[0];
-    // console.log("olde event is",old_event)
+    console.log("old event is" ,oldEventId.event_id)
+  
 
     if (!oldEventId) {
       const error = new Error(`no record of the appointment.`);
@@ -123,13 +122,14 @@ class Appointment {
       throw error;
     }
     const array = [
-      oldEventId,
+      oldEventId.event_id,
       obj.canceled,
       obj.canceler_name,
       obj.cancel_reason,
       obj.canceled_at,
     ]
     let result;
+   
     try {
       result = await db.query(
         `UPDATE appointments
@@ -137,17 +137,18 @@ class Appointment {
                   canceler_name = $3 ,
                   cancel_reason = $4,
                   canceled_at = $5 
-          WHERE event_id = $1`
+          WHERE event_id = $1
+          RETURNING event_id, start_time`
       , array)
 
     } catch (err) {
       console.log(err)
     }
-    console.log("result", result)
+    console.log(`event id ${result.rows[0].event_id} and start time ${result.rows[0].start_time} is canceled`)
+
   }
 
 }
-
 
 module.exports = Appointment;
 
