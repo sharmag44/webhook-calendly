@@ -3,7 +3,7 @@
 const Appointment = require("../models/appointment");
 const express = require("express");
 const router = new express.Router();
-const ExpressError = require("./expressError");
+const ExpressError = require("../expressError");
 
 
 router.get('/', async function (req, res, next) {

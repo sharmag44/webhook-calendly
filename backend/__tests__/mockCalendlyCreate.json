@@ -1,6 +1,6 @@
 {
     "event": "invitee.created",
-    "time": "2019-08-29T18:55:36Z",
+    "time": "2019-08-29T22:59:12Z",
     "payload": {
         "event_type": {
             "uuid": "DFAPDRQHRI7OHDQ2",
@@ -14,7 +14,7 @@
             }
         },
         "event": {
-            "uuid": "BELCE6PKDJEEYPMV",
+            "uuid": "FHKED5IPUQV6KXXG",
             "assigned_to": [
                 "Stephanie Simms"
             ],
@@ -25,15 +25,15 @@
                     "primary": true
                 }
             ],
-            "start_time": "2019-08-29T16:30:00-07:00",
-            "start_time_pretty": "04:30pm - Thursday, August 29, 2019",
-            "invitee_start_time": "2019-08-29T16:30:00-07:00",
-            "invitee_start_time_pretty": "04:30pm - Thursday, August 29, 2019",
-            "end_time": "2019-08-29T16:45:00-07:00",
-            "end_time_pretty": "04:45pm - Thursday, August 29, 2019",
-            "invitee_end_time": "2019-08-29T16:45:00-07:00",
-            "invitee_end_time_pretty": "04:45pm - Thursday, August 29, 2019",
-            "created_at": "2019-08-29T11:55:35-07:00",
+            "start_time": "2019-08-30T11:00:00-07:00",
+            "start_time_pretty": "11:00am - Friday, August 30, 2019",
+            "invitee_start_time": "2019-08-30T11:00:00-07:00",
+            "invitee_start_time_pretty": "11:00am - Friday, August 30, 2019",
+            "end_time": "2019-08-30T11:15:00-07:00",
+            "end_time_pretty": "11:15am - Friday, August 30, 2019",
+            "invitee_end_time": "2019-08-30T11:15:00-07:00",
+            "invitee_end_time_pretty": "11:15am - Friday, August 30, 2019",
+            "created_at": "2019-08-29T15:59:11-07:00",
             "location": null,
             "canceled": false,
             "canceler_name": null,
@@ -41,14 +41,14 @@
             "canceled_at": null
         },
         "invitee": {
-            "uuid": "GDPBWE6ITLQM3OWE",
+            "uuid": "HFLFQC2WLFEOF6BO",
             "first_name": null,
             "last_name": null,
-            "name": "Seivarden",
-            "email": "seivarden@ancillary.com",
+            "name": "Test User",
+            "email": "testuser@gmail.com",
             "text_reminder_number": null,
             "timezone": "America/Los_Angeles",
-            "created_at": "2019-08-29T11:55:35-07:00",
+            "created_at": "2019-08-29T15:59:11-07:00",
             "is_reschedule": false,
             "payments": [],
             "canceled": false,
@@ -56,8 +56,16 @@
             "cancel_reason": null,
             "canceled_at": null
         },
-        "questions_and_answers": [],
-        "questions_and_responses": {},
+        "questions_and_answers": [
+            {
+                "question": "Please share anything that will help prepare for our meeting.",
+                "answer": "my fake appointment"
+            }
+        ],
+        "questions_and_responses": {
+            "1_question": "Please share anything that will help prepare for our meeting.",
+            "1_response": "my fake appointment"
+        },
         "tracking": {
             "utm_campaign": null,
             "utm_source": null,
@@ -72,3 +80,9 @@
         "new_invitee": null
     }
  }
+ 
+ 
+ 
+ 
+
+ 

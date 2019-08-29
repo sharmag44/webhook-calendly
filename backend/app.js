@@ -6,10 +6,10 @@ app.use(cors());
 
 /** import routes */
 
-const usersRoutes = require('./routes/users');
-const salariesRoutes = require('./routes/salaries');
-const authRoutes = require('./routes/auth');
-const questionsRoutes = require('./routes/questions');
+// const usersRoutes = require('./routes/users');
+// const salariesRoutes = require('./routes/salaries');
+// const authRoutes = require('./routes/auth');
+// const questionsRoutes = require('./routes/questions');
 const calendlyWebhookRoute = require("./routes/calendlyWebhook");
 const appointmentsRoutes = require("./routes/appointments");
 
@@ -17,10 +17,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 /** routes */
-app.use('/login', authRoutes);
-app.use('/users', usersRoutes);
-app.use('/salaries', salariesRoutes);
-app.use('/questions', questionsRoutes);
+// app.use('/login', authRoutes);
+// app.use('/users', usersRoutes);
+// app.use('/salaries', salariesRoutes);
+// app.use('/questions', questionsRoutes);
 app.use('/webhook', calendlyWebhookRoute);
 app.use('/appointments', appointmentsRoutes);
 

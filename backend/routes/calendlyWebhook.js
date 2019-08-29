@@ -3,15 +3,15 @@
 const Appointment = require("../models/appointment");
 const express = require("express");
 const router = new express.Router();
-const ExpressError = require("./expressError");
-const { parseResponse } = require("./helperWebhook");
+const ExpressError = require("../expressError");
+const { parseResponse } = require("../helperWebhook");
 const jsonschema = require("jsonschema");
-const appointmentSchema = require("./schemas/appointmentSchema.json");
+const appointmentSchema = require("../schemas/appointmentSchema.json");
 
 // NOTE: To test webhook/calendly functionality locally with ngrok you must configure this endpoint as '/'
 router.post('/', async function (req, res, next) {
   try {
-    
+    console.log("I am here at route ")
     // parse request payload then validate
     const eventPayload = req.body.payload;
     const parsedObj = parseResponse(eventPayload);
