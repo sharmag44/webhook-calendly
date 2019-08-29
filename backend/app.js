@@ -4,7 +4,7 @@ const app = express();
 const ExpressError = require("./expressError");
 
 const { parseResponse } = require("./helperWebhook");
-const { create, cancel} = require("./models/appointment");
+const { create, cancel, findAll, findAppointmentsByUser} = require("./models/appointment");
 
 const jsonschema = require("jsonschema");
 const appointmentSchema = require("./schemas/appointmentSchema.json");
@@ -45,4 +45,13 @@ app.post('/webhook', async function (req, res, next) {
   }
 });
 
+app.get('/', async function (req, res, next) {
+  let appointments= await findAll()
+  return res.json({ appointments });
+})
+
+app.get('/:email', async function (req, res, next) {
+  let appointments= await findAppointmentsByUser(req.params.email)
+  return res.json({ appointments });
+})
 module.exports = app;
