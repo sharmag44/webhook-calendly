@@ -78,6 +78,7 @@ INSERT INTO users_calendly_users (user_id, calendly_user_id) VALUES
 
 -- TODO: verify that this is correct JSON SCHEMA 
 --  {"event_id": "BCHFF2F62BWNJVPP",
+--   "user_email": "testuser@gmail.com",
 --   "calendly_user_id": "ABCFF2F62BWNJVPP",
 --   "created_at": "2019-08-29T09:15:00-07:00",
 --   "event_type": "One-on-One",

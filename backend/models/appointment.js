@@ -117,7 +117,6 @@ class Appointment {
     const oldEventId = oldEventResult.rows[0];
     // console.log("olde event is",old_event)
 
-
     if (!oldEventId) {
       const error = new Error(`no record of the appointment.`);
       error.status = 404;   // 404 NOT FOUND
@@ -148,10 +147,6 @@ class Appointment {
   }
 
 }
-
-
-
-
 
 
 module.exports = Appointment;

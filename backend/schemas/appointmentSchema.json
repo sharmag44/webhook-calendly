@@ -6,6 +6,7 @@
   "title": "The Root Schema",
   "required": [
     "event_id",
+    "user_email",
     "calendly_user_id",
     "start_time",
     "start_time_pretty",
@@ -21,6 +22,16 @@
       "default": "",
       "examples": [
         "BCHFF2F62BWNJVPP"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "user_email": {
+      "$id": "#/properties/user_email",
+      "type": "string",
+      "title": "The User_email Schema",
+      "default": "",
+      "examples": [
+        "testuser@gmail.com"
       ],
       "pattern": "^(.*)$"
     },
