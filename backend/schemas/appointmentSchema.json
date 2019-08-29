@@ -77,7 +77,7 @@
     },
     "reason": {
       "$id": "#/properties/reason",
-      "type": "string",
+      "type": ["string", "null"],
       "title": "The Reason Schema",
       "default": "",
       "examples": [
@@ -156,7 +156,7 @@
     },
     "canceler_name": {
       "$id": "#/properties/canceler_name",
-      "type": "string",
+      "type": ["string", "null"],
       "title": "The Canceler_name Schema",
       "default": "",
       "examples": [
@@ -166,7 +166,7 @@
     },
     "cancel_reason": {
       "$id": "#/properties/cancel_reason",
-      "type": "string",
+      "type": ["string", "null"],
       "title": "The Cancel_reason Schema",
       "default": "",
       "examples": [
@@ -176,7 +176,7 @@
     },
     "canceled_at": {
       "$id": "#/properties/canceled_at",
-      "type": "string",
+      "type": ["string", "null"],
       "title": "The Canceled_at Schema",
       "default": "",
       "examples": [
@@ -186,7 +186,7 @@
     },
     "old_event_id": {
       "$id": "#/properties/old_event_id",
-      "type": "string",
+      "type": ["string", "null"],
       "title": "The Old_event_id Schema",
       "default": "",
       "examples": [
@@ -196,7 +196,7 @@
     },
     "new_event_id": {
       "$id": "#/properties/new_event_id",
-      "type": "string",
+      "type": ["string", "null"],
       "title": "The New_event_id Schema",
       "default": "",
       "examples": [
