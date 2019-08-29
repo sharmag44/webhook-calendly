@@ -8,6 +8,7 @@ const flatten = require('flat')
 
 // Helper function to parse big json data to flat object
 function parseResponse(obj) {
+    
     let flatObj = flatten(obj)
     let appointmentObj = {
         event_id: flatObj['event.uuid'],
@@ -32,9 +33,9 @@ function parseResponse(obj) {
 
 
     // reschedule appointment
+    return appointmentObj
 
-
-    console.log("appointment object is  ", appointmentObj)
+    // console.log("appointment object is  ", appointmentObj)
 
     // console.log("array is ",array)
 }

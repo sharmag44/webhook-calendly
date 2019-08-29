@@ -26,6 +26,7 @@ app.post('/', async function (req, res, next) {
     
     case 'invitee.created':
       const createdEvent = event.payload;
+    
       parsedObj = parseResponse(createdEvent);
       await create(parsedObj);
       break;

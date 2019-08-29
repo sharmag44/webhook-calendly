@@ -21,25 +21,27 @@ CREATE TABLE users (
 
 -- Rescheduling an appt in calendly results in canceled true and creation of new record
 -- This is cross referenced as the old_event_id and new_event_id
+
+-- Changed timestamp to text so that we can query record using value from calendly obj
 CREATE TABLE appointments (
   id serial PRIMARY KEY,
   user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE,
   event_id TEXT NOT NULL,
   calendly_user_id TEXT NOT NULL,
-  created_at TIMESTAMP,
+  created_at TEXT,
   event_type TEXT,
   event_type_name TEXT,
   reason TEXT,
   admin_notes TEXT DEFAULT NULL,
-  start_time TIMESTAMP NOT NULL,
+  start_time TEXT NOT NULL,
   start_time_pretty TEXT NOT NULL,
-  end_time TIMESTAMP NOT NULL,
+  end_time TEXT NOT NULL,
   end_time_pretty TEXT NOT NULL,
   location TEXT,
   canceled BOOLEAN NOT NULL,
   canceler_name TEXT,
   cancel_reason TEXT,
-  canceled_at TIMESTAMP,
+  canceled_at TEXT,
   old_event_id TEXT,
   new_event_id TEXT
 );
@@ -55,6 +57,7 @@ CREATE TABLE users_calendly_users (
 INSERT INTO users (email, password, is_admin, first_name, last_name, current_company, hire_date, needs, goals) VALUES
   ('testuser@gmail.com', 'password123', false, 'Test', 'User', 'Google', '2018-06-23', 'Talk to financial advisor about salary/equity negotiations.', 'Increase in equity.'),
   ('admin@gmail.com', 'admin123', true, 'Admin', 'User', '', '2019-06-23', '', ''),
+   ('gioramlevi515@gmail.com', 'secret', false, 'emi', 'User', '', '2019-06-23', '', ''),
   ('nate@gmail.com', 'nate123', false, 'Nate', 'Lipp', 'Rithm', '2019-06-23', 'Get help from a lawyer.', 'Increase in salary.'),
   ('elie@gmail.com', 'elie123', false, 'Elie', 'Schoppik', 'Rithm', '2017-06-01', 'Talk to financial advisor to calculate how many instructors he can hire.', 'Recruit more instructors.'),
   ('joel@gmail.com', 'joel123', false, 'Joel', 'Burton', 'Rithm', '2017-08-23', 'General investment advice', 'Help bootcamp grads negotiate.');
