@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Endpoint for webhook to receive calendly events
-app.post('/', function (req, res, next) {
+app.post('/', async function (req, res, next) {
   let event;
   try {
     event = req.body
@@ -20,19 +20,19 @@ app.post('/', function (req, res, next) {
   catch (err) {
     res.status(400).send(`Webhook Error: ${err.message}`);
   }
-
+  let parsedObj;
   // Handle the event
   switch (event.event) {
-
+    
     case 'invitee.created':
       const createdEvent = event.payload;
-      let parsedObj = parseResponse(createdEvent);
-      create(parsedObj);
+      parsedObj = parseResponse(createdEvent);
+      await create(parsedObj);
       break;
     case 'invitee.canceled':
       const canceledEvent = event.payload;
-      let parsedObj = parseResponse(canceledEvent);
-      cancel(parsedObj);
+      parsedObj = parseResponse(canceledEvent);
+      await cancel(parsedObj);
       break;
     default:
       // Unexpected event type

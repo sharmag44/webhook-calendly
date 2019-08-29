@@ -30,7 +30,7 @@ CREATE TABLE appointments (
   event_type TEXT,
   event_type_name TEXT,
   reason TEXT,
-  admin_notes TEXT,
+  admin_notes TEXT DEFAULT NULL,
   start_time TIMESTAMP NOT NULL,
   start_time_pretty TEXT NOT NULL,
   end_time TIMESTAMP NOT NULL,
