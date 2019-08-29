@@ -35,9 +35,6 @@ function parseResponse(obj) {
     // reschedule appointment
     return appointmentObj
 
-    // console.log("appointment object is  ", appointmentObj)
-
-    // console.log("array is ",array)
 }
 
 // Two scenarios for invitee.canceled: 
