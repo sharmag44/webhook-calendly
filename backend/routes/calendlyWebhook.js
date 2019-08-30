@@ -11,7 +11,6 @@ const appointmentSchema = require("../schemas/appointmentSchema.json");
 // NOTE: To test webhook/calendly functionality locally with ngrok you must configure this endpoint as '/'
 router.post('/', async function (req, res, next) {
   try {
-    console.log("I am here at route ")
     // parse request payload then validate
     const eventPayload = req.body.payload;
     const parsedObj = parseResponse(eventPayload);

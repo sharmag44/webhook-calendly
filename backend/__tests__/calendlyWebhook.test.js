@@ -7,6 +7,9 @@ const app = require('../app');
 // model imports
 const Appointments = require('../models/appointment');
 
+// helper function
+const { parseResponse } = require("../helperWebhook")
+
 
 //test config  
 const { SEED_USER_SQL, SEED_APPT_SQL} = require("../config")
@@ -70,6 +73,29 @@ describe('POST /webhook', function () {
    });
 });
 
+describe('Appointments model', function () {
+  test('Should insert new appointment record to database', async function () {
+    const eventPayload = mockCalendlyCreate.payload;
+    const parsedObj = parseResponse(eventPayload);
+    let response =  await Appointments.create(parsedObj)
+     expect(response.event_id).toBe("FHKED5IPUQV6KXXG");
+     expect(response.start_time).toBe("2019-08-30T11:00:00-07:00")
+   });
+
+   test('Should update appointment record to database', async function () {
+    // creating test appointment
+    const createPayload = mockCalendlyCreate.payload;
+    const createParsedObj = parseResponse(createPayload);
+    await Appointments.create(createParsedObj)
+
+    const cancelPayload = mockCalendlyCancel.payload;
+    const cancelParsedObj = parseResponse(cancelPayload);
+    let response =  await Appointments.cancel(cancelParsedObj)
+    
+     expect(response.event_id).toBe("FHKED5IPUQV6KXXG");
+     expect(response.canceled).toBe(true)
+   });
+});
 
 afterAll(async function () {
   await afterAllHook();

@@ -9,7 +9,6 @@ describe("Test webhook helper  function", function () {
 
     test("should return flatten and parsed  create object", async function () {
         let obj = parseResponse(createPayload)
-        console.log(obj)
         expect(obj).toEqual({
             event_id: 'FHKED5IPUQV6KXXG',
             user_email: 'testuser@gmail.com',

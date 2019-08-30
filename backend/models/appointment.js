@@ -8,17 +8,44 @@ class Appointment {
    */
 
   // find all appointment data from elevate appointments database
+  // { appointments: [{
+  // user_id, 
+  // first_name, 
+  // last_name, 
+  // email, 
+  // created_at, 
+  // event_type, 
+  // event_name,
+  // start_time_pretty,
+  // location
+  // canceled
+  // }]}
   static async findAll(){
+    
     const result = await db.query(
       `SELECT  user_id, users.first_name, users.last_name, users.email, created_at, event_type, event_type_name, start_time_pretty, location, canceled
       FROM appointments
       JOIN users on users.id = appointments.user_id
       ORDER BY users.last_name
        `);
+
        let appointments = result.rows
        return appointments
   }
 
+  // find appointments by user email from elevate appointments database
+  // { appointments: [{
+  // user_id, 
+  // first_name, 
+  // last_name, 
+  // email, 
+  // created_at, 
+  // event_type, 
+  // event_name,
+  // start_time_pretty,
+  // location
+  // canceled
+  // }]}
   static async findAppointmentsByUserEmail(email){
 
     const result = await db.query(
@@ -27,12 +54,20 @@ class Appointment {
       JOIN users on users.id = appointments.user_id
       WHERE users.email = $1
        `, [email]);
-       let appointments = result.rows
+
+       let appointments = result.rows[0]
+
+       if(!appointments){
+        const error = new Error(`no appointment for ${email}`);
+        error.status = 404;   // 404 NOT FOUND
+        throw error;
+       }
        return appointments
      
-
   }
 
+  // Insert new calendly object to database
+  // {event_id, start_time}
   static async create(obj) {
 
     let user_email = obj.user_email
@@ -49,7 +84,8 @@ class Appointment {
       error.status = 404;   // 404 NOT FOUND
       throw error;
     }
-    let array = [user.id,
+
+    let queryArray = [user.id,
     obj.event_id,
     obj.calendly_user_id,
     obj.created_at,
@@ -95,19 +131,22 @@ class Appointment {
             )
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
         RETURNING event_id, start_time`
-        , array);
+        , queryArray);
+
     } catch (err) {
       console.log(err)
     }
-    console.log(`event id ${result.rows[0].event_id} and start time ${result.rows[0].start_time} is created`)
+
+    return result.rows[0]
   }
 
-
+  // Update calendly object to database
+  // {event_id, start_time, canceled}
   static async cancel(obj) {
     
     let startTime = obj.start_time
     let professionalId = obj.calendly_user_id
-  
+   
     const oldEventResult = await db.query(
       `SELECT event_id, start_time, canceled
           FROM appointments
@@ -115,8 +154,6 @@ class Appointment {
       [startTime, professionalId]);
 
     const oldEventId = oldEventResult.rows[0];
-    console.log("old event is" ,oldEventId.event_id)
-  
 
     if (!oldEventId) {
       const error = new Error(`no record of the appointment.`);
@@ -140,14 +177,14 @@ class Appointment {
                   cancel_reason = $4,
                   canceled_at = $5 
           WHERE event_id = $1
-          RETURNING event_id, start_time`
+          RETURNING event_id, start_time, canceled`
       , array)
 
     } catch (err) {
       console.log(err)
     }
-    console.log(`event id ${result.rows[0].event_id} and start time ${result.rows[0].start_time} is canceled`)
-
+    
+    return result.rows[0]
   }
 
 }

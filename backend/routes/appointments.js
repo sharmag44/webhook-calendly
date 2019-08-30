@@ -5,7 +5,7 @@ const express = require("express");
 const router = new express.Router();
 const ExpressError = require("../expressError");
 
-
+// GET--- endpoint for getting all appointment
 router.get('/', async function (req, res, next) {
     try {
         let appointments = await Appointment.findAll();
@@ -16,9 +16,10 @@ router.get('/', async function (req, res, next) {
 
 });
 
+// GET---endpoint for getting appointments matched with params email
 router.get('/:email', async function (req, res, next) {
     try {
-        let appointments = await Appointment.findAppointmentsByUser(req.params.email);
+        let appointments = await Appointment.findAppointmentsByUserEmail(req.params.email);
         return res.json({ appointments });
     } catch (err) {
         next(err)
