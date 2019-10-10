@@ -14,7 +14,7 @@ const inputEmail = "test@gmail.com"
 
 
 /**
- * Hooks to insert a user, company, and job, and to authenticate
+ * Hook to insert a user, company, and job, and to authenticate
  *  the user and the company for respective tokens that are stored
  *  in the input `testData` parameter.
  * @param {Object} TEST_DATA - build the TEST_DATA object
