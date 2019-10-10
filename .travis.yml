@@ -4,6 +4,6 @@ node_js:
 services:
   - postgresql
 before_script:
-  - psql < data.sql
+  - psql < backend/data.sql
 env:
   - NODE_ENV=test
