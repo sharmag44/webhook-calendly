@@ -6,6 +6,6 @@ services:
 before_install:
   - cd backend
 before_script:
-  - psql < backend/data.sql
+  - psql < data.sql
 env:
   - NODE_ENV=test
