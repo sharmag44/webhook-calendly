@@ -3,6 +3,8 @@ node_js:
   - "node"
 services:
   - postgresql
+before_install:
+  - cd backend
 before_script:
   - psql < backend/data.sql
 env:
