@@ -2,9 +2,10 @@
   "name": "calendly-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "start": "node server.js"
   },
   "jest": {
     "modulePathIgnorePatterns": [
